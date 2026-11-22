@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polyarthrite Rhumatoïde — Cours, QCM & Flashcards</title>
+<style>
+  /* ===== RESET & BASE ===== */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: #eef3f9;
+    color: #1a2a3a;
+    line-height: 1.65;
+  }
+  /* ===== HEADER ===== */
+  header {
+    background: linear-gradient(135deg, #0f3d6e, #1e6bb8, #2e8fd6);
+    color: #fff;
+    padding: 35px 20px 28px;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,.18);
+  }
+  header h1 { font-size: 1.9em; letter-spacing: .5px; margin-bottom: 8px; }
+  header p { font-size: .95em; opacity: .92; }
+  /* ===== CONTAINER ===== */
+  .container { max-width: 1050px; margin: 25px auto; padding: 0 16px 60px; }
+  /* ===== TABS ===== */
+  .tabs {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 22px; justify-content: center;
+  }
+  .tab-btn {
+    padding: 11px 26px; border: none; border-radius: 30px;
+    background: #d6e3f2; color: #0f3d6e;
+    font-weight: 700; font-size: .95em; cursor: pointer;
+    transition: all .25s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,.06);
+  }
+  .tab-btn:hover { background: #b9d0ea; transform: translateY(-1px); }
+  .tab-btn.active {
+    background: linear-gradient(135deg, #0f3d6e, #2e8fd6);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(15,61,110,.35);
+  }
+  /* ===== TAB CONTENT ===== */
+  .tab-content { display: none; animation: fade .35s ease; }
+  .tab-content.active { display: block; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  /* ===== CARDS ===== */
+  .card {
+    background: #fff; border-radius: 14px;
+    padding: 26px 28px; margin-bottom: 20px;
+    box-shadow: 0 3px 16px rgba(15,61,110,.08);
+    border-left: 5px solid #2e8fd6;
+  }
+  .card h2 {
+    color: #0f3d6e; font-size: 1.3em;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 2px solid #e3ecf7;
+  }
+  .card h3 {
+    color: #1e6bb8; font-size: 1.05em;
+    margin: 16px 0 8px;
+  }
+  .card ul { margin: 0 0 10px 22px; }
+  .card li { margin-bottom: 5px; }
+  .card p { margin-bottom: 10px; }
+  .highlight {
+    background: #fff3cd; color: #7a5b00;
+    padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  }
+  /* ===== QCM ===== */
+  .qcm-item {
+    background: #fbfdff; border: 1px solid #dbe8f5;
+    border-radius: 12px; padding: 18px 20px;
+    margin-bottom: 16px; transition: box-shadow .2s;
+  }
+  .qcm-item:hover { box-shadow: 0 3px 12px rgba(30,107,184,.1); }
+  .qcm-item .question {
+    font-weight: 700; color: #0f3d6e;
+    margin-bottom: 12px; font-size: 1.02em;
+  }
+  .qcm-item label {
+    display: block; padding: 8px 12px; margin: 5px 0;
+    border-radius: 8px; cursor: pointer;
+    background: #fff; border: 1px solid #e3ecf7;
+    transition: all .15s;
+  }
+  .qcm-item label:hover { background: #eef5fc; border-color: #9cc3e8; }
+  .qcm-item input[type="radio"] { margin-right: 9px; accent-color: #2e8fd6; }
+  .feedback {
+    margin-top: 10px; padding: 10px 14px;
+    border-radius: 8px; font-size: .93em;
+    font-weight: 600; display: none;
+  }
+  .feedback.correct {
+    background: #d4edda; color: #155724;
+    border-left: 4px solid #28a745; display: block;
+  }
+  .feedback.wrong {
+    background: #f8d7da; color: #721c24;
+    border-left: 4px solid #dc3545; display: block;
+  }
+  #scoreDisplay {
+    margin: 20px 0 14px; padding: 14px;
+    background: #eaf3fc; border-radius: 10px;
+    font-size: 1.15em; font-weight: 700;
+    color: #0f3d6e; text-align: center;
+  }
+  /* ===== BUTTONS ===== */
+  .btn {
+    padding: 11px 24px; border: none; border-radius: 10px;
+    background: linear-gradient(135deg, #0f3d6e, #2e8fd6);
+    color: #fff; font-weight: 700; font-size: .95em;
+    cursor: pointer; transition: all .2s;
+    box-shadow: 0 3px 10px rgba(15,61,110,.25);
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 16px rgba(15,61,110,.35); }
+  .btn:active { transform: translateY(0); }
+  /* ===== FLASHCARDS ===== */
+  .flashcard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 18px;
+  }
+  .flashcard { perspective: 1200px; height: 190px; cursor: pointer; }
+  .flashcard-inner {
+    position: relative; width: 100%; height: 100%;
+    transition: transform .6s cubic-bezier(.4,.2,.2,1);
+    transform-style: preserve-3d;
+  }
+  .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+  .flashcard-front, .flashcard-back {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: 14px; padding: 18px;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; overflow-y: auto;
+  }
+  .flashcard-front {
+    background: linear-gradient(135deg, #0f3d6e, #2e8fd6);
+    color: #fff; font-weight: 700; font-size: 1.02em;
+    box-shadow: 0 4px 16px rgba(15,61,110,.25);
+  }
+  .flashcard-back {
+    background: #fff; border: 2px solid #2e8fd6;
+    color: #1a2a3a; font-size: .9em; font-weight: 400;
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 16px rgba(15,61,110,.15);
+  }
+  .flashcard-back strong { color: #0f3d6e; }
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.4em; }
+    .card { padding: 20px 18px; }
+    .tab-btn { padding: 9px 18px; font-size: .88em; }
+    .flashcard { height: 210px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Polyarthrite Rhumatoïde (PR)</h1>
+  <p>Pr Hela Fourati — Rhumatologie DCEM2 | Cours · 20 QCM corrigés · Flashcards</p>
+</header>
+
+<div class="container">
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="cours">📖 Cours</button>
+    <button class="tab-btn" data-tab="qcm">❓ QCM (20)</button>
+    <button class="tab-btn" data-tab="flash">🃏 Flashcards</button>
+  </div>
+
+  <!-- ================= COURS ================= -->
+  <div id="cours" class="tab-content active">
+    <div class="card">
+      <h2>I. Définition</h2>
+      <p>La <strong>polyarthrite rhumatoïde (PR)</strong> est le plus fréquent des rhumatismes inflammatoires chroniques. Elle se caractérise par une <span class="highlight">inflammation avec prolifération du tissu synovial</span> entraînant la destruction des structures articulaires.</p>
+      <ul>
+        <li>Rhumatisme <strong>acromélique</strong> (atteinte des extrémités), déformant et invalidant.</li>
+        <li>Expression polymorphe : signes articulaires + extra-articulaires → <strong>maladie systémique</strong>.</li>
+        <li>Maladie sévère et invalidante dans <span class="highlight">20 à 25 % des cas</span>.</li>
+        <li>Prise en charge <strong>précoce, personnalisée, multidisciplinaire</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>II. Épidémiologie</h2>
+      <ul>
+        <li>Prévalence : <span class="highlight">0,3 à 0,8 %</span> chez l'adulte.</li>
+        <li>Début le plus souvent vers <strong>40 ans</strong>, mais possible à tout âge.</li>
+        <li><strong>3 fois plus fréquente chez la femme</strong> avant 60 ans (déséquilibre s'atténue après 60 ans).</li>
+        <li>Prédisposition génétique (liaison avec le <strong>système HLA</strong>).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>III. Physiopathologie</h2>
+      <p>Maladie <strong>multifactorielle</strong> : facteurs génétiques (HLA-DRB1…), environnementaux (tabagisme, microbiote buccal/intestinal) → réponse immunitaire innée et adaptative incontrôlée.</p>
+      <h3>Autoanticorps</h3>
+      <ul>
+        <li><strong>Facteur rhumatoïde (FR)</strong> : IgM anti-IgG.</li>
+        <li><strong>ACPA</strong> : anticorps anti-protéines citrullinées.</li>
+      </ul>
+      <h3>Mécanismes clés</h3>
+      <ul>
+        <li><strong>Synovite rhumatoïde</strong> : macrophages, lymphocytes T et B + prolifération des synovocytes → <strong>pannus synovial</strong>.</li>
+        <li>Cytokines pro-inflammatoires : <strong>TNFα, IL-1, IL-6</strong>.</li>
+        <li><strong>Chondrolyse</strong> : synovocytes fibroblastiques → PGE2 + métalloprotéinases → dégradation du collagène de type 2.</li>
+        <li><strong>Angiogenèse</strong> : TGFβ, VEGF, PDGF, FGF-1 et 2 → recrutement cellulaire.</li>
+        <li><strong>Destruction osseuse</strong> : préostéoclastes → ostéoclastes → érosions osseuses.</li>
+      </ul>
+      <h3>Cibles thérapeutiques</h3>
+      <ul>
+        <li>Anti-TNF, anti-IL-6R, anti-CD20 (lymphocytes B), CTLA4-Ig (costimulation T), anti-JAK.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>IV. Tableau clinique</h2>
+      <h3>1. Phase de début</h3>
+      <ul>
+        <li>Oligoarthrite ou polyarthrite <strong>chronique (&gt; 6 semaines)</strong>.</li>
+        <li>Douleurs inflammatoires : <span class="highlight">réveil en fin de nuit, raideur matinale &gt; 30 min</span>.</li>
+        <li>Localisations : <strong>poignets, MCP, IPP</strong>, chevilles, MTP.</li>
+        <li><strong>Squeeze test</strong> : douleur à la compression latérale des MCP et MTP.</li>
+        <li>Gonflement articulaire (synovite et/ou épanchement), limitation de mobilité.</li>
+      </ul>
+      <h3>2. Phase d'état</h3>
+      <ul>
+        <li>Polyarthrite <strong>destructrice, déformante, enraidissante</strong>.</li>
+        <li>Atteinte <strong>périphérique, bilatérale et symétrique</strong> : MCP, IPP, poignets, MTP → puis coudes, genoux, hanches, épaules, rachis cervical.</li>
+        <li>Gonflement, chaleur, douleur, enraidissement matinal, amyotrophie juxta-articulaire.</li>
+      </ul>
+      <h3>Déformations de la main</h3>
+      <ul>
+        <li><strong>« Dos de chameau »</strong> : double gonflement dos du poignet + MCP.</li>
+        <li><strong>« Touche de piano »</strong> : saillie de la tête ulnaire mobile (synovite radio-ulnaire inférieure).</li>
+        <li><strong>« Coup de vent cubital »</strong> : subluxation en dedans des MCP, doigts inclinés vers le bord interne.</li>
+        <li>Luxation palmaire des têtes métacarpiennes.</li>
+      </ul>
+      <h3>Déformations des doigts</h3>
+      <ul>
+        <li><strong>Col de cygne</strong> : hyper-extension IPP + flexion IPD (2e et 3e doigts).</li>
+        <li><strong>Boutonnière</strong> : flexion IPP + extension IPD (4e et 5e doigts, rupture du tendon extenseur au niveau P2).</li>
+        <li><strong>Doigt en maillet</strong> : flexion permanente de l'IPD (rupture de l'extenseur au niveau P3).</li>
+        <li><strong>Pouce en Z</strong> : rétraction de la 1re commissure, flexion MCP + extension IP (arthrite trapézo-métacarpienne).</li>
+      </ul>
+      <h3>Autres localisations</h3>
+      <ul>
+        <li><strong>Coudes</strong> : tuméfaction postérieure, enraidissement en demi-flexion et pronation.</li>
+        <li><strong>Épaules</strong> : enraidissement en adduction et rotation interne.</li>
+        <li><strong>Pieds</strong> : avant-pieds plats/ronds (luxation MTP, durillons), hallux valgus, quintus varus → avant-pied triangulaire.</li>
+        <li><strong>Genoux</strong> : épanchement puis enraidissement en flexion.</li>
+        <li><strong>Hanches (coxite)</strong> : douleurs, boiterie → attitude vicieuse en flexion-adduction.</li>
+        <li><strong>Rachis cervical</strong> : luxation atloïdo-axoïdienne (compression médullaire possible).</li>
+        <li><strong>ATM</strong> : douleur et gêne à la mastication.</li>
+        <li><span class="highlight">Épargnés : sacro-iliaques, sterno-claviculaires, rachis dorso-lombaire.</span></li>
+      </ul>
+      <h3>3. Signes périarticulaires</h3>
+      <ul>
+        <li><strong>Ténosynovites</strong> : rupture des extenseurs des doigts.</li>
+        <li><strong>Bursites et kystes</strong> : kyste poplité (douleur + tuméfaction du creux poplité).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>V. Explorations paracliniques</h2>
+      <h3>1. Biologie</h3>
+      <ul>
+        <li><strong>Syndrome inflammatoire</strong> : ↑ VS et/ou CRP ; NFS (hyperleucocytose à PNN, thrombocytose, anémie inflammatoire).</li>
+        <li><strong>FR</strong> : IgM anti-IgG, ELISA ; sensibilité <span class="highlight">60–80 %</span>, spécificité <span class="highlight">65–85 %</span> ; peut précéder les signes cliniques. Présent aussi dans Gougerot-Sjögren, lupus, tuberculose, hémopathies, sujet âgé.</li>
+        <li><strong>Anti-CCP (ACPA)</strong> : anti-protéines déiminées (arginine → citrulline) ; spécificité <span class="highlight">90–95 %</span> ; peut précéder les signes cliniques.</li>
+        <li><strong>Liquide articulaire</strong> : inflammatoire, riche en PNN non altérés, stérile, sans cristaux.</li>
+      </ul>
+      <h3>2. Radiologie</h3>
+      <ul>
+        <li>Radio <strong>mains + poignets face</strong> et <strong>pieds face + 3/4</strong> systématiques ; souvent normales au début (examen de référence).</li>
+        <li>Lésions précoces : érosions (carpes, MCP, IPP, MTP, <strong>signe de Brown</strong> = tête du 5e métatarsien).</li>
+        <li>Répéter à <strong>6 mois</strong> la 1re année, puis <strong>tous les ans</strong> pendant 3 ans.</li>
+        <li>Phase d'état : raréfaction osseuse, pincement de l'interligne, géodes, luxations.</li>
+        <li><strong>Échographie</strong> : épaississement synovial, épanchement, hyperhémie Doppler (synovite active), érosions infra-radiologiques, ténosynovite.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>VI. Diagnostic</h2>
+      <h3>Critères ACR/EULAR 2010 (diagnostic si score ≥ 6)</h3>
+      <ul>
+        <li><strong>Atteinte articulaire</strong> (0–5) : 1 moyenne/grosse = 0 ; 2–10 moyennes/grosses = 1 ; 1–3 petites = 2 ; 4–10 petites = 3 ; &gt; 10 (dont ≥ 1 petite) = 5.</li>
+        <li><strong>Sérologie</strong> (0–3) : FR et ACPA négatifs = 0 ; faiblement positifs (&gt; N et ≤ 3N) = 2 ; fortement positifs (&gt; 3N) = 3.</li>
+        <li><strong>Durée de la synovite</strong> (0–1) : &lt; 6 semaines = 0 ; ≥ 6 semaines = 1.</li>
+        <li><strong>Marqueurs de l'inflammation</strong> (0–1) : VS et CRP normales = 0 ; VS ou CRP élevée = 1.</li>
+      </ul>
+      <h3>Diagnostic différentiel</h3>
+      <ul>
+        <li>Hémogramme : leuconeutropénie/lymphopénie (lupus, Gougerot-Sjögren), thrombopénie (lupus).</li>
+        <li>Bandelette urinaire + créatininémie : néphropathie (connectivite, vascularite).</li>
+        <li>ASAT/ALAT : hépatite virale, auto-immune, connectivites…</li>
+        <li>Anticorps anti-nucléaires → anti-DNA, anti-ENA (lupus, connectivite).</li>
+        <li>Ponction articulaire : éliminer arthrite septique ou microcristalline.</li>
+        <li>Radio thorax : sclérodermie, sarcoïdose, tuberculose.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>VII. Évolution et survie</h2>
+      <ul>
+        <li>Évolution sur des années, phases de poussée et d'accalmie/rémission.</li>
+        <li><strong>DAS28-VS / DAS28-CRP</strong> : articulations douloureuses et gonflées sur 28, raideur matinale, douleur (EVA), appréciation globale (EVA), VS et/ou CRP.</li>
+        <li>Rémission : <span class="highlight">DAS28-VS &lt; 2,6</span> ; faible : 2,6–3,2 ; modérée : 3,2–5,1 ; très active : &gt; 5,1.</li>
+        <li>Surmortalité : vascularite, atteinte viscérale, infection, effets secondaires des traitements.</li>
+      </ul>
+      <h3>Facteurs prédictifs de sévérité</h3>
+      <ul>
+        <li>Lésions structurales sur radiographies.</li>
+        <li>DAS28-VS &gt; 3,2 persistante.</li>
+        <li>Syndrome inflammatoire biologique intense.</li>
+        <li>Positivité FR et/ou ACPA.</li>
+        <li>Handicap fonctionnel : <strong>HAQ ≥ 0,5</strong>.</li>
+        <li>Manifestations extra-articulaires/systémiques.</li>
+        <li>Comorbidités cardiovasculaires, tumorales ou infectieuses.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>VIII. Formes cliniques</h2>
+      <ul>
+        <li><strong>PR du sujet âgé</strong> : touche également les deux sexes, atteinte atypique proximale, fièvre, altération de l'état général.</li>
+        <li><strong>Formes symptomatiques (20–30 %)</strong> :
+          <ul>
+            <li>Polyarticulaire aiguë fébrile (AEG, évoque infection).</li>
+            <li>Rhizomélique (hanches + épaules, &gt; 65 ans, évoque pseudo-PR rhizomélique).</li>
+            <li>Monoarticulaire (évoque arthrite septique ou microcristalline).</li>
+            <li>Palindromique (poussées mono/oligoarticulaires récidivantes, régressives en 2–3 jours, sans séquelle).</li>
+            <li>Arthralgique (sans gonflement ; risque ↑ si antécédent familial 1er degré).</li>
+          </ul>
+        </li>
+        <li><strong>Manifestations extra-articulaires</strong> :
+          <ul>
+            <li>Générales : fébricule, amaigrissement, asthénie.</li>
+            <li><strong>Nodules rhumatoïdes</strong> : sous-cutanés, fermes, indolores, olécrâne, crête ulnaire, tendons ; histologie = nécrose fibrinoïde + infiltrat histiocytaire palissadique + cellules géantes.</li>
+            <li>Cardiovasculaires : péricardites (souvent asymptomatiques), ↑ morbi-mortalité CV (coronaropathie, AVC).</li>
+            <li>Pleuropulmonaires : <strong>pneumopathies interstitielles diffuses</strong> (plus fréquentes chez hommes tabagiques, PR nodulaire, FR/ACPA forts) ; nodules, pleurésies.</li>
+            <li>Vascularite rhumatoïde.</li>
+            <li>Oculaires : sclérite/épisclérite (PR féminines, FR+) ; <strong>syndrome de Gougerot-Sjögren secondaire</strong> (10–30 %, xérophtalmie).</li>
+            <li>Hématologiques : anémie inflammatoire, adénopathies (20–30 %), <strong>syndrome de Felty</strong> (PR ancienne nodulaire + FR+ + splénomégalie + neutropénie).</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================= QCM ================= -->
+  <div id="qcm" class="tab-content">
+    <div class="card">
+      <h2>20 QCM — Polyarthrite Rhumatoïde</h2>
+      <p style="margin-bottom:14px;color:#555;">Cochez la bonne réponse. La correction s'affiche immédiatement.</p>
+      <div id="qcmContainer"></div>
+      <div id="scoreDisplay">Score : 0 / 20</div>
+      <button class="btn" onclick="resetQCM()">🔄 Recommencer</button>
+    </div>
+  </div>
+
+  <!-- ================= FLASHCARDS ================= -->
+  <div id="flash" class="tab-content">
+    <div class="card">
+      <h2>Flashcards — Polyarthrite Rhumatoïde</h2>
+      <p style="margin-bottom:14px;color:#555;">Cliquez sur une carte pour la retourner.</p>
+      <div class="flashcard-grid" id="flashContainer"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ========== DONNÉES QCM ========== */
+const qcmData = [
+  { q: "1. La polyarthrite rhumatoïde est caractérisée par :", opts: ["Une inflammation avec prolifération du tissu synovial", "Une dégénérescence du cartilage sans inflammation", "Une atteinte isolée des sacro-iliaques", "Une origine exclusivement infectieuse"], correct: 0 },
+  { q: "2. La prévalence de la PR chez l'adulte est de :", opts: ["0,01–0,05 %", "0,3–0,8 %", "5–10 %", "15–20 %"], correct: 1 },
+  { q: "3. La PR est plus fréquente chez :", opts: ["L'homme avant 60 ans", "La femme avant 60 ans (3 fois plus)", "L'enfant", "Les deux sexes de façon égale à tout âge"], correct: 1 },
+  { q: "4. Le facteur rhumatoïde (FR) est une immunoglobuline de classe :", opts: ["IgA", "IgE", "IgM", "IgD"], correct: 2 },
+  { q: "5. La spécificité des anticorps anti-CCP (ACPA) est de l'ordre de :", opts: ["50–60 %", "65–75 %", "90–95 %", "100 %"], correct: 2 },
+  { q: "6. La raideur matinale dans la PR débutante est typiquement :", opts: ["< 5 minutes", "> 30 minutes", "> 2 heures uniquement", "Absente"], correct: 1 },
+  { q: "7. Le squeeze test consiste à :", opts: ["Comprimer latéralement les MCP et MTP", "Palper les sacro-iliaques", "Comprimer le rachis cervical", "Mobiliser les épaules"], correct: 0 },
+  { q: "8. La déformation « en coup de vent cubital » correspond à :", opts: ["Une subluxation en dedans des MCP", "Une hyper-extension de l'IPP", "Une flexion de l'IPD", "Une luxation de la hanche"], correct: 0 },
+  { q: "9. Le doigt en col de cygne associe :", opts: ["Flexion IPP + extension IPD", "Hyper-extension IPP + flexion IPD", "Flexion permanente de l'IPD", "Extension MCP + flexion IPP"], correct: 1 },
+  { q: "10. Le doigt en boutonnière touche surtout :", opts: ["Les 1er et 2e doigts", "Les 2e et 3e doigts", "Les 4e et 5e doigts", "Le pouce uniquement"], correct: 2 },
+  { q: "11. Les articulations habituellement épargnées par la PR sont :", opts: ["Les MCP et IPP", "Les poignets", "Les sacro-iliaques et le rachis dorso-lombaire", "Les MTP"], correct: 2 },
+  { q: "12. Le signe de Brown correspond à une érosion précoce de :", opts: ["La tête du 5e métatarsien", "La tête ulnaire", "Le carpe", "L'IPP du 2e doigt"], correct: 0 },
+  { q: "13. Dans la PR, le liquide articulaire est :", opts: ["Mécanique, pauvre en cellules", "Inflammatoire, riche en PNN non altérés, stérile, sans cristaux", "Hémorragique", "Purulent avec germes"], correct: 1 },
+  { q: "14. Selon les critères ACR/EULAR 2010, le diagnostic de PR est posé si le score est :", opts: ["≥ 3", "≥ 4", "≥ 6", "≥ 10"], correct: 2 },
+  { q: "15. Dans les critères ACR/EULAR 2010, une sérologie FR ou ACPA fortement positive (> 3N) donne :", opts: ["0 point", "1 point", "2 points", "3 points"], correct: 3 },
+  { q: "16. La rémission selon le DAS28-VS correspond à :", opts: ["DAS28-VS < 2,6", "DAS28-VS < 3,2", "DAS28-VS < 5,1", "DAS28-VS > 5,1"], correct: 0 },
+  { q: "17. Le syndrome de Felty associe :", opts: ["PR + splénomégalie + neutropénie", "PR + péricardite + pleurésie", "PR + sclérite + xérophtalmie", "PR + nodules + vascularite"], correct: 0 },
+  { q: "18. La manifestation pleuropulmonaire la plus fréquente de la PR est :", opts: ["La pleurésie", "Les nodules rhumatoïdes", "Les pneumopathies interstitielles diffuses", "L'asthme"], correct: 2 },
+  { q: "19. Un facteur prédictif de sévérité de la PR est :", opts: ["Un HAQ < 0,5", "Un DAS28-VS < 2,6", "La positivité du FR et/ou des ACPA", "L'absence de syndrome inflammatoire"], correct: 2 },
+  { q: "20. La forme palindromique de la PR est caractérisée par :", opts: ["Des poussées récidivantes régressives en 2–3 jours sans séquelle", "Une atteinte rhizomélique après 65 ans", "Une monoarthrite fébrile", "Une polyarthrite aiguë fébrile avec AEG"], correct: 0 }
+];
+
+/* ========== DONNÉES FLASHCARDS ========== */
+const flashData = [
+  { front: "Définition de la PR", back: "Rhumatisme inflammatoire chronique le plus fréquent : inflammation + prolifération du tissu synovial → destruction articulaire. Acromélique, déformant, invalidant, systémique." },
+  { front: "Prévalence de la PR", back: "0,3 à 0,8 % chez l'adulte. Début vers 40 ans. 3× plus fréquente chez la femme avant 60 ans." },
+  { front: "Autoanticorps de la PR", back: "Facteur rhumatoïde (FR, IgM anti-IgG) et ACPA (anti-protéines citrullinées)." },
+  { front: "Cytokines clés de la PR", back: "TNFα, IL-1, IL-6 → amplification de l'inflammation et destruction articulaire." },
+  { front: "Sensibilité et spécificité du FR", back: "Sensibilité 60–80 % ; spécificité 65–85 %. Peut précéder les signes cliniques." },
+  { front: "Spécificité des ACPA", back: "90–95 % — plus spécifiques que le FR. Peuvent précéder les signes cliniques." },
+  { front: "Raideur matinale PR", back: "> 30 minutes, réveil en fin de nuit (douleurs inflammatoires)." },
+  { front: "Squeeze test", back: "Douleur à la compression latérale des MCP et MTP — signe précoce de synovite." },
+  { front: "« Dos de chameau »", back: "Double gonflement du dos du poignet et des MCP." },
+  { front: "« Touche de piano »", back: "Saillie de la tête ulnaire mobile, due à une synovite radio-ulnaire inférieure." },
+  { front: "« Coup de vent cubital »", back: "Subluxation en dedans des MCP → inclinaison des doigts vers le bord interne de la main." },
+  { front: "Doigt en col de cygne", back: "Hyper-extension de l'IPP + flexion de l'IPD (2e et 3e doigts)." },
+  { front: "Doigt en boutonnière", back: "Flexion de l'IPP + extension de l'IPD (4e et 5e doigts) — rupture du tendon extenseur au niveau P2." },
+  { front: "Doigt en maillet", back: "Flexion permanente de l'IPD — rupture de l'extenseur au niveau P3." },
+  { front: "Pouce en Z", back: "Rétraction de la 1re commissure + flexion MCP + extension IP (arthrite trapézo-métacarpienne)." },
+  { front: "Articulations épargnées dans la PR", back: "Sacro-iliaques, sterno-claviculaires et rachis dorso-lombaire." },
+  { front: "Signe de Brown", back: "Érosion précoce de la tête du 5e métatarsien." },
+  { front: "Liquide articulaire dans la PR", back: "Inflammatoire, riche en PNN non altérés, stérile, sans cristaux." },
+  { front: "Critères ACR/EULAR 2010 — seuil", back: "Diagnostic de PR si score ≥ 6 (atteinte articulaire 0–5, sérologie 0–3, durée synovite 0–1, inflammation 0–1)." },
+  { front: "DAS28-VS : seuils", back: "Rémission < 2,6 ; faible 2,6–3,2 ; modérée 3,2–5,1 ; très active > 5,1." },
+  { front: "Facteurs prédictifs de sévérité", back: "Lésions structurales, DAS28-VS > 3,2 persistante, syndrome inflammatoire intense, FR/ACPA+, HAQ ≥ 0,5, manifestations extra-articulaires, comorbidités." },
+  { front: "Syndrome de Felty", back: "PR ancienne nodulaire + FR+ + splénomégalie + neutropénie." },
+  { front: "Manifestation pleuropulmonaire la plus fréquente", back: "Pneumopathies interstitielles diffuses (hommes tabagiques, PR nodulaire, FR/ACPA forts)." },
+  { front: "Gougerot-Sjögren secondaire", back: "Retrouvé chez 10–30 % des PR, souvent révélé par une xérophtalmie." }
+];
+
+/* ========== INIT TABS ========== */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ========== RENDER QCM ========== */
+const qcmContainer = document.getElementById('qcmContainer');
+const scoreDisplay = document.getElementById('scoreDisplay');
+let answered = new Array(qcmData.length).fill(false);
+let score = 0;
+
+function renderQCM() {
+  qcmContainer.innerHTML = '';
+  qcmData.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'qcm-item';
+    let optsHTML = '';
+    item.opts.forEach((opt, j) => {
+      optsHTML += `<label><input type="radio" name="q${i}" value="${j}" onchange="checkAnswer(${i}, ${j})"> ${opt}</label>`;
+    });
+    div.innerHTML = `<div class="question">${item.q}</div>${optsHTML}<div class="feedback" id="fb${i}"></div>`;
+    qcmContainer.appendChild(div);
+  });
+}
+
+function checkAnswer(qIndex, chosen) {
+  if (answered[qIndex]) return;
+  answered[qIndex] = true;
+  const fb = document.getElementById('fb' + qIndex);
+  const correct = qcmData[qIndex].correct;
+  const inputs = document.querySelectorAll(`input[name="q${qIndex}"]`);
+  inputs.forEach(inp => inp.disabled = true);
+  if (chosen === correct) {
+    score++;
+    fb.className = 'feedback correct';
+    fb.textContent = '✅ Bonne réponse !';
+  } else {
+    fb.className = 'feedback wrong';
+    fb.textContent = `❌ Mauvaise réponse. La bonne réponse est : ${qcmData[qIndex].opts[correct]}`;
+  }
+  updateScore();
+}
+
+function updateScore() {
+  scoreDisplay.textContent = `Score : ${score} / ${qcmData.length}`;
+}
+
+function resetQCM() {
+  answered = new Array(qcmData.length).fill(false);
+  score = 0;
+  updateScore();
+  renderQCM();
+}
+
+/* ========== RENDER FLASHCARDS ========== */
+const flashContainer = document.getElementById('flashContainer');
+function renderFlashcards() {
+  flashContainer.innerHTML = '';
+  flashData.forEach((item, i) => {
+    const card = document.createElement('div');
+    card.className = 'flashcard';
+    card.innerHTML = `
+      <div class="flashcard-inner">
+        <div class="flashcard-front">${item.front}</div>
+        <div class="flashcard-back">${item.back}</div>
+      </div>`;
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+    flashContainer.appendChild(card);
+  });
+}
+
+/* ========== INIT ========== */
+renderQCM();
+updateScore();
+renderFlashcards();
+</script>
+</body>
+</html>
